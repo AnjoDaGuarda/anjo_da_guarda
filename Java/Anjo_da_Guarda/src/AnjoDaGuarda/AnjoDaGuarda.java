@@ -24,9 +24,8 @@ public class AnjoDaGuarda implements SerialPortEventListener {
     private OutputStream output;
     private static final int TIME_OUT = 2000;
     private static final int DATA_RATE = 9600;
-    private static final int CLOSE_FIRE = 0;
-    private static final int DISTANT_FIRE = 1;
-    private static final int MOVEMENT = 2;
+    private static final String FIRE_SENSOR = "A0";
+    private static final String MOVEMENT_SENSOR = "7";
 
     public static void main(String[] args) throws Exception {
         AnjoDaGuarda anjo = new AnjoDaGuarda();
@@ -105,18 +104,16 @@ public class AnjoDaGuarda implements SerialPortEventListener {
     }
 
     private static void actionByString(String inputLine) {
-        Integer i = new Integer(inputLine);
-        switch (i) {
-            case CLOSE_FIRE:
-                System.out.println("Fogo proximo!");
-                break;
-            case DISTANT_FIRE:
-                System.out.println("Fogo distante ou luz solar!");
-                break;
-            case MOVEMENT:
-                System.out.println("Movimento detectado");
-                break;
-        }
+        
+    	if(inputLine.equals(FIRE_SENSOR)){
+    		System.out.println("Fogo proximo!");
+    	}
+    	else if(inputLine.equals(MOVEMENT_SENSOR)){
+    		System.out.println("Fogo distante ou luz solar!");
+    	}
+    	else{
+    		System.out.println(inputLine);//Caso nao seja os sensores imprime o que vier, por exemplo 'calibrando sensor...'
+    	}
     }
 
 }
