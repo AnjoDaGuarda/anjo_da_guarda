@@ -1,7 +1,9 @@
 *Objetivo
+
 O anjo da guarda é um projeto que tem como objetivo avisar ao dono fenômenos que ocorrem em sua residência.
 
 *Hardwares e dispositivos usados:
+
 1 placa arduino
 2 sensores (1 movimento e 1 fogo)
 1 cabo USB
@@ -10,6 +12,8 @@ O anjo da guarda é um projeto que tem como objetivo avisar ao dono fenômenos que
 1 protoboard
 1 computador (usuário)
 1 celular (receptor das mensagens e das notificações pelo servidor)
+
+
 
 *Bibliotecas:
 1 RxtxComm: possibilita a transmição de dados do arduino para a aplicação java
@@ -20,9 +24,10 @@ O anjo da guarda é um projeto que tem como objetivo avisar ao dono fenômenos que
 1 aplicação java
 1 aplicação android
 1 página html com suas funcionalidades de servidor em php
-1 banco de dados associado ao php
+1 banco de dados associado ao php (MySQL)
 
 *Contribuição e conclusão do trabalho
+
 Por meio do reuso de software, construimos uma aplicação que permite gerenciar dados provenientes de um arduino e seus sensores, a aplicação também possibilita o envio desses dados, de forma tratada, para que o usuário consiga entender a real cituação que sua residência se encontra.
 O usuário pode escolher entre dois modos de envio, sms onde o mesmo pode cadastrar seu número de celular, ou notificação em seu celular android, onde o usuário precisa cadastrar o IMEI do seu aparelho.
 O usuário deverá mapear os sensores para regiões da sua casa, a fim de facilitar a leitura quando o mesmo receber uma mensagem ou notificação, esse mapeamento é realizado na aplicação java e define que sensores estão em que partes da casa, por exemplo:
@@ -30,8 +35,9 @@ sensor 1, movimento, sala;
 sensor 2, movimento, cozinha;
 sensor 3, fogo, cozinha.
 
-Como demonstração do nosso trabalho, escolhemos um sensor de movimento (instalado na porta 7) e um sensor de fogo (instalado na porta A0), além de recebermos notificação no celular quando algum deles for ativado, a projeto Anjo da Guarda ativará um buzzer quando detectar fogo e acionará um led azul quando detectar movimento.
+Como demonstração do nosso trabalho, escolhemos um sensor de movimento (instalado na porta 7) e um sensor de fogo (instalado na porta A0), além de recebermos notificação no celular quando algum deles for ativado, o projeto Anjo da Guarda ativará um buzzer quando detectar fogo e acionará um led azul quando detectar movimento.
 
 Como dificuldades encontradas podemos citar: encontrar bibliotecas que funcionassem no envio das mensagens de texto, compreender a biblioteca do apache, fazer funcionar a comunicação entre arduino e aplicação java e desenvolver aplicação android.
 
 Como o planejamento e desenvolvimento do Anjo da Guarda foi distribuido a equipe do projeto optou por criar um repositório no Github, que guardaria todos os códigos fonte e todas as bibliotecas, assim como toda a documentação referente a este trabalho.
+Vale notar que a escolha das bibliotecas levou em conta duas características básicas, custo e segurança. No primeiro caso as bibliotecas são gratúitas, exceto a biblioteca para mensagens de texto, que limita até um certo ponto diário, no segundo caso todas apresentam mecanismos de segurança e criptografia, como por exemplo o envio de dados pelo método POST.
