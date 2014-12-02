@@ -109,7 +109,10 @@ public class AnjoDaGuarda implements SerialPortEventListener {
     		System.out.println("Fogo proximo!");
     	}
     	else if(inputLine.equals(MOVEMENT_SENSOR)){
-    		System.out.println("Fogo distante ou luz solar!");
+    		System.out.println("Movimento detectado");
+    		SendTextMessage messenger = new SendTextMessage("5521985854673","Movimento foi detectado na sua casa");
+			messenger.send();//Tem que botar um intervalo aqui e no envio pelo sensor de fogo pra nao ficar mandando 5 mil sms
+    		
     	}
     	else{
     		System.out.println(inputLine);//Caso nao seja os sensores imprime o que vier, por exemplo 'calibrando sensor...'
