@@ -1,0 +1,21 @@
+package metodo_de_envio;
+
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+
+public class TransferenciaServidor {
+	private CloseableHttpClient httpclient;
+	
+
+	public void enviar(List<nameValuePair> nameValuePairsString imei, String comando) {
+		post = new HttpPost(pathUrl);
+		nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("imei", imei));
+		nameValuePairs.add(new BasicNameValuePair("senha", "titorarara"));
+		nameValuePairs.add(new BasicNameValuePair("comando", comando));
+	}
+
+}

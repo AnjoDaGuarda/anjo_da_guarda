@@ -1,0 +1,8 @@
+package metodo_de_envio;
+
+public class TransferenciaSMS implements Imetodo {
+	@Override
+	public void actionByString(String inputLine) {
+
+	}
+}

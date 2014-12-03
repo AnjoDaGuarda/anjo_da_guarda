@@ -1,0 +1,29 @@
+package metodo_de_envio;
+
+import java.util.List;
+
+public class TransferenciaServidor {
+
+	public void enviar(List<nameValuePair> nameValuePairsString imei, String comando) {
+		String pathUrl = "http://anjodaguarda.bytearanha.com.br/api.php?op=e";
+		HttpPost post = new HttpPost(pathUrl);
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("imei", imei));
+		nameValuePairs.add(new BasicNameValuePair("senha", "titorarara"));
+		nameValuePairs.add(new BasicNameValuePair("comando", comando));
+		UrlEncodedFormEntity entity = new UrlEncodedFormEntity(nameValuePairs, Consts.UTF_8);
+		post.setEntity(entity);
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		CloseableHttpResponse response = httpclient.execute(post);
+		HttpEntity entity2 = response.getEntity();
+		if (entity2 != null) {
+			long len = entity2.getContentLength();
+			if (len != -1 && len < 2048) {
+(entity2));
+			} else {
+				// Stream content out
+			}
+		}
+	}
+
+}

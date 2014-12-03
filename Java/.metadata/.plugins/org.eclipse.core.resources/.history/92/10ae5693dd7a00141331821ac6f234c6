@@ -1,0 +1,5 @@
+package metodo_de_envio;
+
+public class TransferenciaSMS {
+
+}

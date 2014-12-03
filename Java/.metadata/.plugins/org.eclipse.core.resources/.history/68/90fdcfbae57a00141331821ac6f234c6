@@ -1,0 +1,11 @@
+package metodo_de_envio;
+
+import java.util.HashMap;
+import java.util.List;
+
+public abstract class Metodo {
+	HashMap<String, String> mapCausaConsequencia;
+	List<Integer> imeis;
+
+	public abstract void actionByString(String inputLine);
+}

@@ -1,0 +1,9 @@
+package metodo_de_envio;
+
+import java.util.Map;
+
+public abstract class Metodo {
+Map<String, String> mapCausaConsequencia;
+
+	public abstract void actionByString(String inputLine); 
+}
