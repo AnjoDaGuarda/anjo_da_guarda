@@ -32,7 +32,7 @@ public class TransferenciaServidor extends Metodo {
 			nameValuePairs.add(new BasicNameValuePair("imei", imei));
 			nameValuePairs.add(new BasicNameValuePair("senha", "titorarara"));
 			nameValuePairs.add(new BasicNameValuePair("comando", comando));
-nameValuePairs.add(new BasicNameValuePair("data", LocalDateTime.now().format(formatador)));
+nameValuePairs.add(new BasicNameValuePair(LocalDateTime.now().));
 
 			entity = new UrlEncodedFormEntity(nameValuePairs, Consts.UTF_8);
 			post.setEntity(entity);

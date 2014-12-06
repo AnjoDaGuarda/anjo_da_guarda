@@ -2,7 +2,6 @@ package metodo_de_envio;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-public class TransferenciaServidor extends Metodo {
+public class TransferenciaServidor extends Metodo{
 	private static CloseableHttpClient httpclient = HttpClients.createDefault();
 	private final static String pathUrl = "http://anjodaguarda.bytearanha.com.br/api.php?op=e";
 	private static HttpPost post = new HttpPost(pathUrl);
@@ -32,8 +31,6 @@ public class TransferenciaServidor extends Metodo {
 			nameValuePairs.add(new BasicNameValuePair("imei", imei));
 			nameValuePairs.add(new BasicNameValuePair("senha", "titorarara"));
 			nameValuePairs.add(new BasicNameValuePair("comando", comando));
-nameValuePairs.add(new BasicNameValuePair("data", LocalDateTime.now().format(formatador)));
-
 			entity = new UrlEncodedFormEntity(nameValuePairs, Consts.UTF_8);
 			post.setEntity(entity);
 			response = httpclient.execute(post);
@@ -68,10 +65,12 @@ nameValuePairs.add(new BasicNameValuePair("data", LocalDateTime.now().format(for
 
 	}
 
+
 	public void actionByString(String inputLine) {
-		for (int i = 0; i < imeis.size(); i++) {
-			enviar(imeis.get(i).toString(), mapCausaConsequencia.get(inputLine));
-		}
+for (int i = 0; i < imeis.size(); i++){
+		enviar(imeis.get(i).toString(), mapCausaConsequencia.get(inputLine));
+}
 	}
+
 
 }
