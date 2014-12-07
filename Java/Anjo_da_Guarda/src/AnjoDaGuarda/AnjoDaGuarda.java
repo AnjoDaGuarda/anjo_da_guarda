@@ -66,6 +66,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 			serialPort.notifyOnDataAvailable(true);
 		} catch (Exception e) {
 			System.err.println(e.toString());
+			e.printStackTrace();
 		}
 	}
 
@@ -92,6 +93,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 				metodo.actionByString(inputLine);
 			} catch (Exception e) {
 				System.err.println(e.toString());
+				e.printStackTrace();
 			}
 		}
 		// Ignore all the other eventTypes, but you should consider the other

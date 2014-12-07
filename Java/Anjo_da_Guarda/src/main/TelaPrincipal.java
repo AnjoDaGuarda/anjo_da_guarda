@@ -170,9 +170,11 @@ public class TelaPrincipal {
 		panelSensor.add(comodoA0);
 		comodoA0.setColumns(10);
 		
+		
 		JLabel lblA_0 = new JLabel("A0");
 		lblA_0.setBounds(128, 75, 61, 16);
 		panelSensor.add(lblA_0);
+		preencheDadosSensores(sensorA0, comodoA0, "A0");
 		
 		sensorA1 = new JTextField();
 		sensorA1.setColumns(10);
@@ -187,6 +189,7 @@ public class TelaPrincipal {
 		JLabel lblA_1 = new JLabel("A1");
 		lblA_1.setBounds(128, 98, 61, 16);
 		panelSensor.add(lblA_1);
+		preencheDadosSensores(sensorA1, comodoA1, "A1");
 		
 		sensorA2 = new JTextField();
 		sensorA2.setColumns(10);
@@ -201,6 +204,7 @@ public class TelaPrincipal {
 		JLabel lblA_2 = new JLabel("A2");
 		lblA_2.setBounds(128, 122, 61, 16);
 		panelSensor.add(lblA_2);
+		preencheDadosSensores(sensorA2, comodoA2, "A2");
 		
 		sensorA3 = new JTextField();
 		sensorA3.setColumns(10);
@@ -215,6 +219,7 @@ public class TelaPrincipal {
 		JLabel lblA_3 = new JLabel("A3");
 		lblA_3.setBounds(128, 145, 61, 16);
 		panelSensor.add(lblA_3);
+		preencheDadosSensores(sensorA3, comodoA3, "A3");
 		
 		sensorA4 = new JTextField();
 		sensorA4.setColumns(10);
@@ -229,6 +234,7 @@ public class TelaPrincipal {
 		JLabel lblA_4 = new JLabel("A4");
 		lblA_4.setBounds(128, 168, 61, 16);
 		panelSensor.add(lblA_4);
+		preencheDadosSensores(sensorA4, comodoA4, "A4");
 		
 		sensorA5 = new JTextField();
 		sensorA5.setColumns(10);
@@ -243,6 +249,7 @@ public class TelaPrincipal {
 		JLabel lblA_5 = new JLabel("A5");
 		lblA_5.setBounds(128, 191, 61, 16);
 		panelSensor.add(lblA_5);
+		preencheDadosSensores(sensorA5, comodoA5, "A5");
 		
 		sensor2 = new JTextField();
 		sensor2.setColumns(10);
@@ -257,6 +264,7 @@ public class TelaPrincipal {
 		JLabel label_2 = new JLabel("2");
 		label_2.setBounds(128, 215, 61, 16);
 		panelSensor.add(label_2);
+		preencheDadosSensores(sensor2, comodo2, "2");
 		
 		sensor3 = new JTextField();
 		sensor3.setColumns(10);
@@ -271,6 +279,7 @@ public class TelaPrincipal {
 		JLabel label_3 = new JLabel("3");
 		label_3.setBounds(128, 238, 61, 16);
 		panelSensor.add(label_3);
+		preencheDadosSensores(sensor3, comodo3, "3");
 		
 		sensor4 = new JTextField();
 		sensor4.setColumns(10);
@@ -285,6 +294,7 @@ public class TelaPrincipal {
 		JLabel label_4 = new JLabel("4");
 		label_4.setBounds(128, 264, 61, 16);
 		panelSensor.add(label_4);
+		preencheDadosSensores(sensor4, comodo4, "4");
 		
 		sensor5 = new JTextField();
 		sensor5.setColumns(10);
@@ -299,6 +309,7 @@ public class TelaPrincipal {
 		JLabel label_5 = new JLabel("5");
 		label_5.setBounds(128, 287, 61, 16);
 		panelSensor.add(label_5);
+		preencheDadosSensores(sensor5, comodo5, "5");
 		
 		sensor6 = new JTextField();
 		sensor6.setColumns(10);
@@ -313,6 +324,7 @@ public class TelaPrincipal {
 		JLabel label_6 = new JLabel("6");
 		label_6.setBounds(128, 311, 61, 16);
 		panelSensor.add(label_6);
+		preencheDadosSensores(sensor6, comodo6, "6");
 		
 		sensor7 = new JTextField();
 		sensor7.setColumns(10);
@@ -324,9 +336,10 @@ public class TelaPrincipal {
 		comodo7.setBounds(496, 328, 134, 28);
 		panelSensor.add(comodo7);
 		
-		JLabel label_17 = new JLabel("7");
-		label_17.setBounds(128, 334, 61, 16);
-		panelSensor.add(label_17);
+		JLabel label_7 = new JLabel("7");
+		label_7.setBounds(128, 334, 61, 16);
+		panelSensor.add(label_7);
+		preencheDadosSensores(sensor7, comodo7, "7");
 		
 		sensor8 = new JTextField();
 		sensor8.setColumns(10);
@@ -341,6 +354,7 @@ public class TelaPrincipal {
 		JLabel label_8 = new JLabel("8");
 		label_8.setBounds(128, 361, 61, 16);
 		panelSensor.add(label_8);
+		preencheDadosSensores(sensor8, comodo8, "8");
 		
 		sensor9 = new JTextField();
 		sensor9.setColumns(10);
@@ -355,6 +369,7 @@ public class TelaPrincipal {
 		JLabel label_9 = new JLabel("9");
 		label_9.setBounds(128, 384, 61, 16);
 		panelSensor.add(label_9);
+		preencheDadosSensores(sensor9, comodo9, "9");
 		
 		sensor10 = new JTextField();
 		sensor10.setColumns(10);
@@ -369,6 +384,7 @@ public class TelaPrincipal {
 		JLabel label_10 = new JLabel("10");
 		label_10.setBounds(128, 408, 61, 16);
 		panelSensor.add(label_10);
+		preencheDadosSensores(sensor10, comodo10, "10");
 		
 		sensor11 = new JTextField();
 		sensor11.setColumns(10);
@@ -383,6 +399,7 @@ public class TelaPrincipal {
 		JLabel label_11 = new JLabel("11");
 		label_11.setBounds(128, 431, 61, 16);
 		panelSensor.add(label_11);
+		preencheDadosSensores(sensor11, comodo11, "11");
 		
 		sensor12 = new JTextField();
 		sensor12.setColumns(10);
@@ -397,6 +414,7 @@ public class TelaPrincipal {
 		JLabel label_12 = new JLabel("12");
 		label_12.setBounds(128, 457, 61, 16);
 		panelSensor.add(label_12);
+		preencheDadosSensores(sensor12, comodo12, "12");
 		
 		sensor13 = new JTextField();
 		sensor13.setColumns(10);
@@ -411,6 +429,7 @@ public class TelaPrincipal {
 		JLabel label_13 = new JLabel("13");
 		label_13.setBounds(128, 480, 61, 16);
 		panelSensor.add(label_13);
+		preencheDadosSensores(sensor13, comodo13, "13");
 		
 		salvarSensores = new JButton("Salvar");
 		salvarSensores.addActionListener(new ActionListener() {
@@ -526,5 +545,23 @@ public class TelaPrincipal {
 		cancelarSensores.setBounds(18, 523, 117, 29);
 		panelSensor.add(cancelarSensores);
 	}
+	
+	
+	public void preencheDadosSensores(JTextField sensor, JTextField comodo, String chave){
+		
+		try{
+			String valor = Metodo.mapCausaConsequencia.get(chave);
+			String valor2 = valor.split(" - ")[1];
+			valor = valor.split(" - ")[0];
+			sensor.setText(valor);
+			comodo.setText(valor2);
+		}catch(Exception e){
+			
+		}
+		
+		
+		
+	}
+	
 	/*FIM!Painel Conf dos Sensores********************************************/
 }
