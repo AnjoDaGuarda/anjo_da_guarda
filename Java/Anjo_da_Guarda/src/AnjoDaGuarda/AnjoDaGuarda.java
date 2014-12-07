@@ -6,6 +6,7 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Enumeration;
@@ -28,7 +29,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 	private OutputStream output;
 	private static final int TIME_OUT = 2000;
 	private static final int DATA_RATE = 9600;
-	private Metodo metodo;
+	private Metodo metodo = new TransferenciaSMS();
 	private static String typeMethod;
 
 	public void initialize() {
@@ -83,18 +84,18 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+			String inputLine;
 			try {
-				if (typeMethod.equals("sms")) {
-					metodo = new TransferenciaSMS();
-				} else {
-					metodo = new TransferenciaServidor();
-				}
-				String inputLine = input.readLine();
-				metodo.actionByString(inputLine);
-			} catch (Exception e) {
-				System.err.println(e.toString());
+				
+				inputLine = input.readLine();
+				System.out.println(inputLine);
+				sendInfoByMethods(inputLine);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
 		// Ignore all the other eventTypes, but you should consider the other
 		// ones.
@@ -102,6 +103,11 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 
 	public void setMetodo(Metodo metodo) {
 		this.metodo = metodo;
+	}
+	
+	public void sendInfoByMethods(String inputLine){
+		metodo.actionByString(inputLine);
+		//Adicionar outroes metodos
 	}
 
 }

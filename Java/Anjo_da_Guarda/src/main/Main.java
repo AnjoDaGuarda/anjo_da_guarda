@@ -4,7 +4,7 @@ import AnjoDaGuarda.AnjoDaGuarda;
 
 public final class Main {
 
-	public static void main(String[] args) throws Exception {
+	public static void iniciar() throws Exception {
 		AnjoDaGuarda anjo = new AnjoDaGuarda();
 		anjo.initialize();
 		Thread t = new Thread() {

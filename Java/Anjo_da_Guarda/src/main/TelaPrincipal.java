@@ -80,6 +80,7 @@ public class TelaPrincipal {
 	private JButton salvarSensores;
 	private JButton cancelarSensores;
 	private JButton btnConfEmail;
+	private JButton btnIniciar;
 	//Fim Tela Dos Sensores
 
 	/**
@@ -164,6 +165,20 @@ public class TelaPrincipal {
 		});
 		btnConfEmail.setBounds(321, 313, 157, 34);
 		panelPrincipal.add(btnConfEmail);
+		
+		btnIniciar = new JButton("INICIAR ANJO DA GUARDA");
+		btnIniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Main.iniciar();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnIniciar.setBounds(293, 497, 218, 47);
+		panelPrincipal.add(btnIniciar);
 		
 		/*!Painel Principal************************************************************/
 		

@@ -12,14 +12,25 @@ public class TransferenciaSMS extends Metodo {
 
 	public void actionByString(String inputLine) {
 		String data = LocalDateTime.now().format(formatador);
-		//for (int i = 0; i < celulares.size(); i++) {
-			//SendTextMessage messenger = new SendTextMessage(celulares.get(i)
-			//		.toString(), mapCausaConsequencia.get(inputLine) + " em "
-			//		+ data);
-			SendTextMessage messenger = new SendTextMessage("5521985854673", "Testando sensor arduinos em "+data);
-			messenger.send();
-
+		for (int i = 0; i < celulares.size(); i++) {
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-		//}
+			SendTextMessage messenger = new SendTextMessage(celulares.get(i).toString(), Metodo.mapCausaConsequencia.get(inputLine) + " em "+ data+"\n ");
+			
+			if(Metodo.mapCausaConsequencia.get(inputLine)!=null){
+			messenger.send();
+			}
+		}
+		try {
+			Thread.sleep(180000);//Intervalo entre envios - 3 min para apresentação
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
