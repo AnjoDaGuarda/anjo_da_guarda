@@ -6,6 +6,7 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Enumeration;
@@ -28,11 +29,11 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 	private OutputStream output;
 	private static final int TIME_OUT = 2000;
 	private static final int DATA_RATE = 9600;
-	private Metodo metodo;
+	private Metodo metodo = new TransferenciaSMS();
 	private static String typeMethod;
 
 	public void initialize() {
-		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/tty.usbmodem1411");
+		//System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/tty.usbmodem1411");
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
 		// First, Find an instance of serial port as set in PORT_NAMES.
@@ -47,7 +48,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 			}
 		}
 		if (portId == null) {
-			System.out.println("Could not find COM port.");
+			System.out.println("Porta serial não encontrada.");
 			return;
 		}
 		try {
@@ -66,6 +67,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 			serialPort.notifyOnDataAvailable(true);
 		} catch (Exception e) {
 			System.err.println(e.toString());
+			e.printStackTrace();
 		}
 	}
 
@@ -77,22 +79,23 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 	}
 
 	/**
-	 * Handle an event on the serial port. Read the data and print it.
+	 * Pega o dado do arduino e faz as acoes necessarias
 	 */
 
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+			String inputLine;
 			try {
-				if (typeMethod.equals("sms")) {
-					metodo = new TransferenciaSMS();
-				} else {
-					metodo = new TransferenciaServidor();
-				}
-				String inputLine = input.readLine();
-				metodo.actionByString(inputLine);
-			} catch (Exception e) {
-				System.err.println(e.toString());
+				
+				inputLine = input.readLine();
+				System.out.println(inputLine);
+				sendInfoByMethods(inputLine);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
 		}
 		// Ignore all the other eventTypes, but you should consider the other
 		// ones.
@@ -100,6 +103,11 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 
 	public void setMetodo(Metodo metodo) {
 		this.metodo = metodo;
+	}
+	
+	public void sendInfoByMethods(String inputLine){
+		metodo.actionByString(inputLine);
+		//Adicionar outroes metodos
 	}
 
 }
