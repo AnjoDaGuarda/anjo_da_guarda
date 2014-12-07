@@ -8,7 +8,9 @@ import java.util.Locale;
 import java.util.Map;
 
 public abstract class Metodo {
-	protected Map<String, String> mapCausaConsequencia = new HashMap<String, String>();
+	public static Map<String, String> mapCausaConsequencia = new HashMap<String, String>();
+	
+
 	protected List<Integer> imeis;
 	protected List<Integer> celulares;
 	protected DateTimeFormatter formatador = DateTimeFormatter
@@ -16,5 +18,6 @@ public abstract class Metodo {
 					new Locale("pt", "br"));
 
 	public abstract void actionByString(String inputLine);
+	
 
 }

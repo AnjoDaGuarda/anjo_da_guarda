@@ -16,7 +16,7 @@ public final class Main {
 			}
 		};
 		t.start();
-		System.out.println("Started");
+		System.out.println("Iniciado!");
 	}
 
 }

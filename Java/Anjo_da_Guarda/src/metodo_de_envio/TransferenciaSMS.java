@@ -8,11 +8,14 @@ public class TransferenciaSMS extends Metodo {
 
 	public void actionByString(String inputLine) {
 		String data = LocalDateTime.now().format(formatador);
-		for (int i = 0; i < celulares.size(); i++) {
-			SendTextMessage messenger = new SendTextMessage(celulares.get(i)
-					.toString(), mapCausaConsequencia.get(inputLine) + " em "
-					+ data);
+		//for (int i = 0; i < celulares.size(); i++) {
+			//SendTextMessage messenger = new SendTextMessage(celulares.get(i)
+			//		.toString(), mapCausaConsequencia.get(inputLine) + " em "
+			//		+ data);
+			SendTextMessage messenger = new SendTextMessage("5521985854673", "Testando sensor arduinos em "+data);
 			messenger.send();
-		}
+
+			
+		//}
 	}
 }

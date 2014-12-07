@@ -32,7 +32,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 	private static String typeMethod;
 
 	public void initialize() {
-		System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/tty.usbmodem1411");
+		//System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/tty.usbmodem1411");
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
 		// First, Find an instance of serial port as set in PORT_NAMES.
@@ -47,7 +47,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 			}
 		}
 		if (portId == null) {
-			System.out.println("Could not find COM port.");
+			System.out.println("Porta serial não encontrada.");
 			return;
 		}
 		try {
@@ -77,7 +77,7 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 	}
 
 	/**
-	 * Handle an event on the serial port. Read the data and print it.
+	 * Pega o dado do arduino e faz as acoes necessarias
 	 */
 
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
