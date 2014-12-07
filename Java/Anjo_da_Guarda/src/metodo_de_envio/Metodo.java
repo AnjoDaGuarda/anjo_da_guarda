@@ -11,8 +11,8 @@ public abstract class Metodo {
 	public static Map<String, String> mapCausaConsequencia = new HashMap<String, String>();
 	
 
-	protected List<Integer> imeis;
-	protected List<Integer> celulares;
+	public static List<Integer> imeis;
+	
 	protected DateTimeFormatter formatador = DateTimeFormatter
 			.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(
 					new Locale("pt", "br"));

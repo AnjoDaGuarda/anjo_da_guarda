@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import java.awt.Font;
 
@@ -12,9 +13,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import metodo_de_envio.Metodo;
+import metodo_de_envio.TransferenciaEmail;
+import metodo_de_envio.TransferenciaSMS;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +26,21 @@ public class TelaPrincipal {
 
 	private JFrame frame;
 	
-	//Tela dos Sensores
+	//Componentes de Conf SMS****************************
+	
+	private JTextField novoCelularField;
+	
+	//!Fim Comp Conf SMS*****************************
+	
+	
+	//Componentes de Conf EMAIL****************************
+	
+	private JTextField novoEmailField;
+	
+	//!FIM Componentes de Conf EMAIL****************************
+	
+	
+	//Componentes das Telas dos Sensores******************
 	private JTextField sensorA0;
 	private JTextField comodoA0;
 	private JTextField sensorA1;
@@ -61,6 +79,7 @@ public class TelaPrincipal {
 	private JTextField comodo13;
 	private JButton salvarSensores;
 	private JButton cancelarSensores;
+	private JButton btnConfEmail;
 	//Fim Tela Dos Sensores
 
 	/**
@@ -96,6 +115,8 @@ public class TelaPrincipal {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		JPanel panelSensor = new JPanel();
+		JPanel panelSMS = new JPanel();
+		JPanel panelEmail = new JPanel();
 		
 		
 		/*Painel Principal************************************************************/
@@ -123,16 +144,163 @@ public class TelaPrincipal {
 		JButton btnNmerosDeTelefone = new JButton("Configurações SMS");
 		btnNmerosDeTelefone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				panelPrincipal.setVisible(false);
+				panelSMS.setVisible(true);
 			}
 		});
 		btnNmerosDeTelefone.setBounds(321, 236, 157, 34);
 		panelPrincipal.add(btnNmerosDeTelefone);
 		
 		JButton btnConfiguraesAndroid = new JButton("Configurações Android");
-		btnConfiguraesAndroid.setBounds(321, 315, 157, 34);
+		btnConfiguraesAndroid.setBounds(321, 388, 157, 34);
 		panelPrincipal.add(btnConfiguraesAndroid);
 		
+		btnConfEmail = new JButton("Configurações Email");
+		btnConfEmail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelPrincipal.setVisible(false);
+				panelEmail.setVisible(true);
+			}
+		});
+		btnConfEmail.setBounds(321, 313, 157, 34);
+		panelPrincipal.add(btnConfEmail);
+		
 		/*!Painel Principal************************************************************/
+		
+		
+		
+		
+		
+		
+		/*Painel Conf SMS**************************************************************/
+		
+		panelSMS.setBounds(0, 0, 800, 578);
+		frame.getContentPane().add(panelSMS);
+		panelSMS.setLayout(null);
+		panelSMS.setVisible(false);
+		
+		JLabel lblConfiguraesSms = new JLabel("CONFIGURAÇÕES SMS");
+		lblConfiguraesSms.setFont(new Font("Lucida Grande", Font.BOLD, 18));
+		lblConfiguraesSms.setBounds(282, 18, 208, 51);
+		panelSMS.add(lblConfiguraesSms);
+		
+		JLabel listaCelulares = new JLabel("<html>\nCelulares para enviar notificações:<br><br>\n\n");
+		for(String celular : TransferenciaSMS.celulares){
+			listaCelulares.setText(listaCelulares.getText()+celular+"<br>\n");
+		}
+		listaCelulares.setVerticalAlignment(SwingConstants.TOP);
+		listaCelulares.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		listaCelulares.setBounds(32, 70, 355, 464);
+		panelSMS.add(listaCelulares);
+		
+		novoCelularField = new JTextField();
+		novoCelularField.setBounds(399, 109, 144, 28);
+		panelSMS.add(novoCelularField);
+		novoCelularField.setColumns(10);
+		
+		JLabel lblNovoCelular = new JLabel("Novo celular:");
+		lblNovoCelular.setBounds(399, 81, 88, 16);
+		panelSMS.add(lblNovoCelular);
+		
+		JButton btnAdicionarSMS = new JButton("Adicionar");
+		btnAdicionarSMS.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TransferenciaSMS.celulares.add(novoCelularField.getText());
+				listaCelulares.setText(listaCelulares.getText()+novoCelularField.getText()+"<br>\n");
+				novoCelularField.setText("");
+			}
+		});
+		btnAdicionarSMS.setBounds(555, 110, 117, 29);
+		panelSMS.add(btnAdicionarSMS);
+		
+		JButton btnRemoverSMS = new JButton("Remover todos");
+		btnRemoverSMS.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TransferenciaSMS.celulares = new ArrayList<String>();
+				listaCelulares.setText("<html>\nCelulares para enviar notificações:<br><br>\n\n");
+			}
+		});
+		btnRemoverSMS.setBounds(555, 151, 144, 29);
+		panelSMS.add(btnRemoverSMS);
+		
+		JButton btnVoltarSMS = new JButton("Voltar");
+		btnVoltarSMS.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelSMS.setVisible(false);
+				panelPrincipal.setVisible(true);
+			}
+		});
+		btnVoltarSMS.setBounds(19, 532, 117, 29);
+		panelSMS.add(btnVoltarSMS);
+		
+		
+		
+		/*!FIM Painel Conf SMS**************************************************************/
+		
+		
+		
+		/*Painel Conf EMAIL**************************************************************/
+		
+		panelEmail.setBounds(0, 0, 800, 578);
+		frame.getContentPane().add(panelEmail);
+		panelEmail.setLayout(null);
+		panelEmail.setVisible(false);
+		
+		JLabel lblConfiguraesEmail = new JLabel("CONFIGURAÇÕES EMAIL");
+		lblConfiguraesEmail.setFont(new Font("Lucida Grande", Font.BOLD, 18));
+		lblConfiguraesEmail.setBounds(270, 18, 217, 51);
+		panelEmail.add(lblConfiguraesEmail);
+		
+		JLabel listaEmails = new JLabel("<html>\nEmails para enviar notificações:<br><br>\n\n");
+		for(String celular : TransferenciaSMS.celulares){
+			listaEmails.setText(listaEmails.getText()+celular+"<br>\n");
+		}
+		listaEmails.setVerticalAlignment(SwingConstants.TOP);
+		listaEmails.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		listaEmails.setBounds(32, 70, 355, 464);
+		panelEmail.add(listaEmails);
+		
+		novoEmailField = new JTextField();
+		novoEmailField.setBounds(399, 109, 144, 28);
+		panelEmail.add(novoEmailField);
+		novoEmailField.setColumns(10);
+		
+		JLabel lblNovoEmail = new JLabel("Novo email:");
+		lblNovoEmail.setBounds(399, 81, 88, 16);
+		panelEmail.add(lblNovoEmail);
+		
+		JButton btnAdicionarEmail = new JButton("Adicionar");
+		btnAdicionarEmail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TransferenciaEmail.emails.add(novoEmailField.getText());
+				listaEmails.setText(listaEmails.getText()+novoEmailField.getText()+"<br>\n");
+				novoEmailField.setText("");
+			}
+		});
+		btnAdicionarEmail.setBounds(555, 110, 117, 29);
+		panelEmail.add(btnAdicionarEmail);
+		
+		JButton btnRemoverEmail = new JButton("Remover todos");
+		btnRemoverEmail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TransferenciaEmail.emails = new ArrayList<String>();
+				listaEmails.setText("<html>\nEmails para enviar notificações:<br><br>\n\n");
+			}
+		});
+		btnRemoverEmail.setBounds(555, 151, 144, 29);
+		panelEmail.add(btnRemoverEmail);
+		
+		JButton btnVoltarEmail = new JButton("Voltar");
+		btnVoltarEmail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelEmail.setVisible(false);
+				panelPrincipal.setVisible(true);
+			}
+		});
+		btnVoltarEmail.setBounds(19, 532, 117, 29);
+		panelEmail.add(btnVoltarEmail);
+		
+		/*!FIM Painel Conf EMAIL**************************************************************/
 		
 		
 		
