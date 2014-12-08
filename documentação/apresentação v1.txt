@@ -16,28 +16,34 @@ O anjo da guarda é um projeto que tem como objetivo avisar ao dono fenômenos que
 
 
 *Bibliotecas:
-1 RxtxComm: possibilita a transmição de dados do arduino para a aplicação java
-2 NexmoSDK: permite a aplicação java enviar mensagens de testo para um celular
-3 httpcomponents-client-4.3.6: biblioteca da APACHE que permite enviar dados da aplicação java para um servidor
+1 RxtxComm: possibilita a transmição de dados do arduino para a aplicação java e foi a única que achamos que fizesse isso.
+2 NexmoSDK: permite a aplicação java enviar mensagens de texto para um celular, foi a única que consiguimos por para funcionar e que fosse FREE.
+3 httpcomponents-client-4.3.6: biblioteca da APACHE que permite enviar dados da aplicação java para um servidor. Escolhemos essa biblioteca pela sua robustez e a confiabilidade que a mesma tem no mercado.
+4 org.json: para ler conteúdo json do servidor, uma das mais utilizadas no mercado, o que possibilitou maior esclarecimento sob documentações.
 
 *aplicações:
 1 aplicação java
 1 aplicação android
+1 aplicação para arduino
 1 página html com suas funcionalidades de servidor em php
 1 banco de dados associado ao php (MySQL)
 
-*Contribuição e conclusão do trabalho
+*linguagem de desenvolvimento
+Desktop: Java 8, foi escolhida por ser multe plataforma e pela facilidade dos integrantes programarem de forma rápida e minimisando os erros, também foi escolhida pelas suas novas APIs como por exemplo a nova API de data, que pode ser encontrada no pacote java.time e que facilitou muito a captura e o tratamento da data e hora onde os eventos ocorrem.
+Arduino:
+Web: html e php, para melhor comunicação do banco com o servidor e que era de fácil implementação.
+Banco de Dados: MySQL foi usado para fazer a persistência dos dados, para uso do servidor e aplicação android, foi escolhido pela simplicidade e pela sua larga usabilidade na web, só temos uma tabela para guardar as tuplas de eventos, que guardam 4 atributos (id, imei, comando, data);
+Sistema de gerenciamento de controle: Git foi escolhido para manter a consistência do projeto e para integrar as atividades dos membros da equipe, visto que a programação foi distribuida, logo os membros não poderiam se encontrar presencialmente e trabalhar juntos em somente uma máquina, nosso repositório está no Github e esta disponível em https://github.com/AnjoDaGuarda/anjo_da_guarda
 
-Por meio do reuso de software, construimos uma aplicação que permite gerenciar dados provenientes de um arduino e seus sensores, a aplicação também possibilita o envio desses dados, de forma tratada, para que o usuário consiga entender a real cituação que sua residência se encontra.
-O usuário pode escolher entre dois modos de envio, sms onde o mesmo pode cadastrar seu número de celular, ou notificação em seu celular android, onde o usuário precisa cadastrar o IMEI do seu aparelho.
-O usuário deverá mapear os sensores para regiões da sua casa, a fim de facilitar a leitura quando o mesmo receber uma mensagem ou notificação, esse mapeamento é realizado na aplicação java e define que sensores estão em que partes da casa, por exemplo:
-sensor 1, movimento, sala;
-sensor 2, movimento, cozinha;
-sensor 3, fogo, cozinha.
+*arquitetura de projeto do software desktop
 
-Como demonstração do nosso trabalho, escolhemos um sensor de movimento (instalado na porta 7) e um sensor de fogo (instalado na porta A0), além de recebermos notificação no celular quando algum deles for ativado, o projeto Anjo da Guarda ativará um buzzer quando detectar fogo e acionará um led azul quando detectar movimento.
+Stratege: a aplicação não trata na camada mais alta de abstração envio por sms e envio para o servidor de formas diferentes.
+Facade: para diminuir a dependencia do domínio da aplicação do domínio de negócio, gerando um subsistema mais reutilizável.
 
-Como dificuldades encontradas podemos citar: encontrar bibliotecas que funcionassem no envio das mensagens de texto, compreender a biblioteca do apache, fazer funcionar a comunicação entre arduino e aplicação java e desenvolver aplicação android.
+*Dificuldades encontradas
 
-Como o planejamento e desenvolvimento do Anjo da Guarda foi distribuido a equipe do projeto optou por criar um repositório no Github, que guardaria todos os códigos fonte e todas as bibliotecas, assim como toda a documentação referente a este trabalho.
-Vale notar que a escolha das bibliotecas levou em conta duas características básicas, custo e segurança. No primeiro caso as bibliotecas são gratúitas, exceto a biblioteca para mensagens de texto, que limita até um certo ponto diário, no segundo caso todas apresentam mecanismos de segurança e criptografia, como por exemplo o envio de dados pelo método POST.
+encontrar bibliotecas que funcionassem no envio das mensagens de texto
+compreender a biblioteca do apache
+fazer funcionar a comunicação entre arduino e aplicação java
+desenvolver aplicação android
+Manipular arquivos json na aplicação java

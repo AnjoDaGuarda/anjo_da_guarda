@@ -13,7 +13,6 @@ import java.util.Enumeration;
 
 import metodo_de_envio.Metodo;
 import metodo_de_envio.TransferenciaSMS;
-import metodo_de_envio.TransferenciaServidor;
 
 public class AnjoDaGuarda implements SerialPortEventListener {
 
@@ -31,9 +30,11 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 	private static final int DATA_RATE = 9600;
 	private Metodo metodo = new TransferenciaSMS();
 	private static String typeMethod;
+	public String oldInputLine = null;
 
 	public void initialize() {
-		//System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/tty.usbmodem1411");
+		// System.setProperty("gnu.io.rxtx.SerialPorts",
+		// "/dev/tty.usbmodem1411");
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
 		// First, Find an instance of serial port as set in PORT_NAMES.
@@ -86,16 +87,16 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			String inputLine;
 			try {
-				
+
 				inputLine = input.readLine();
 				System.out.println(inputLine);
 				sendInfoByMethods(inputLine);
-				
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 		// Ignore all the other eventTypes, but you should consider the other
 		// ones.
@@ -104,10 +105,11 @@ public class AnjoDaGuarda implements SerialPortEventListener {
 	public void setMetodo(Metodo metodo) {
 		this.metodo = metodo;
 	}
-	
-	public void sendInfoByMethods(String inputLine){
-		metodo.actionByString(inputLine);
-		//Adicionar outroes metodos
-	}
 
+	public void sendInfoByMethods(String inputLine) {
+		if (oldInputLine.equals(null) || !inputLine.equals(oldInputLine)) {
+			metodo.actionByString(inputLine);
+			// Adicionar outroes metodos
+		}
+	}
 }
