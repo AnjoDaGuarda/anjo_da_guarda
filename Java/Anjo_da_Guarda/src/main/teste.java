@@ -21,6 +21,9 @@
 //import java.util.ArrayList;
 //import java.util.HashMap;
 //import java.util.Map;
+//import javax.swing.JTextPane;
+//import java.awt.TextArea;
+//import javax.swing.JTextArea;
 //
 //public class teste {
 //
@@ -60,64 +63,21 @@
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.getContentPane().setLayout(null);
 //		
-//		JPanel panelEmail = new JPanel();
-//		panelEmail.setBounds(0, 0, 800, 578);
-//		frame.getContentPane().add(panelEmail);
-//		panelEmail.setLayout(null);
-//		panelEmail.setVisible(false);
+//		JPanel panelConsole = new JPanel();
+//		panelConsole.setBounds(0, 0, 800, 578);
+//		frame.getContentPane().add(panelConsole);
+//		panelConsole.setLayout(null);
 //		
-//		JLabel lblConfiguraesEmail = new JLabel("CONFIGURAÇÕES EMAIL");
-//		lblConfiguraesEmail.setFont(new Font("Lucida Grande", Font.BOLD, 18));
-//		lblConfiguraesEmail.setBounds(270, 18, 217, 51);
-//		panelEmail.add(lblConfiguraesEmail);
+//		JLabel lblAnjoDaGuarda = new JLabel("ANJO DA GUARDA");
+//		lblAnjoDaGuarda.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+//		lblAnjoDaGuarda.setBounds(333, 16, 146, 36);
+//		panelConsole.add(lblAnjoDaGuarda);
 //		
-//		JLabel listaEmails = new JLabel("<html>\nEmails para enviar notificações:<br><br>\n\n");
-//		for(String celular : TransferenciaSMS.celulares){
-//			listaEmails.setText(listaEmails.getText()+celular+"<br>\n");
-//		}
-//		listaEmails.setVerticalAlignment(SwingConstants.TOP);
-//		listaEmails.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-//		listaEmails.setBounds(32, 70, 355, 464);
-//		panelEmail.add(listaEmails);
+//		JTextArea textArea = new JTextArea();
+//		textArea.setRows(50);
+//		textArea.setBounds(729, 85, -660, 454);
+//		panelConsole.add(textArea);
 //		
-//		novoEmailField = new JTextField();
-//		novoEmailField.setBounds(399, 109, 144, 28);
-//		panelEmail.add(novoEmailField);
-//		novoEmailField.setColumns(10);
 //		
-//		JLabel lblNovoEmail = new JLabel("Novo email:");
-//		lblNovoEmail.setBounds(399, 81, 88, 16);
-//		panelEmail.add(lblNovoEmail);
-//		
-//		JButton btnAdicionarEmail = new JButton("Adicionar");
-//		btnAdicionarEmail.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				TransferenciaEmail.emails.add(novoEmailField.getText());
-//				listaEmails.setText(listaEmails.getText()+novoEmailField.getText()+"<br>\n");
-//				novoEmailField.setText("");
-//			}
-//		});
-//		btnAdicionarEmail.setBounds(555, 110, 117, 29);
-//		panelEmail.add(btnAdicionarEmail);
-//		
-//		JButton btnRemoverEmail = new JButton("Remover todos");
-//		btnRemoverEmail.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				TransferenciaEmail.emails = new ArrayList<String>();
-//				listaEmails.setText("<html>\nEmails para enviar notificações:<br><br>\n\n");
-//			}
-//		});
-//		btnRemoverEmail.setBounds(555, 151, 144, 29);
-//		panelEmail.add(btnRemoverEmail);
-//		
-//		JButton btnVoltarEmail = new JButton("Voltar");
-//		btnVoltarEmail.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				panelEmail.setVisible(false);
-//				panelPrincipal.setVisible(true);
-//			}
-//		});
-//		btnVoltarEmail.setBounds(19, 532, 117, 29);
-//		panelEmail.add(btnVoltarEmail);
 //	}
 //}

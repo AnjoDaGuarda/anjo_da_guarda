@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -12,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import outros.TextAreaOutputStream;
 import metodo_de_envio.Metodo;
 import metodo_de_envio.TransferenciaEmail;
 import metodo_de_envio.TransferenciaSMS;
@@ -118,6 +121,10 @@ public class TelaPrincipal {
 		JPanel panelSensor = new JPanel();
 		JPanel panelSMS = new JPanel();
 		JPanel panelEmail = new JPanel();
+		JPanel panelConsole = new JPanel();
+		JTextArea textArea = new JTextArea();
+		
+		
 		
 		
 		/*Painel Principal************************************************************/
@@ -169,6 +176,10 @@ public class TelaPrincipal {
 		btnIniciar = new JButton("INICIAR ANJO DA GUARDA");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Anjo da Guarda iniciado!");
+//				panelConsole.setVisible(true);
+//				panelPrincipal.setVisible(false);
+//				TextAreaOutputStream console = new TextAreaOutputStream(textArea,"Console:");
 				try {
 					Main.iniciar();
 				} catch (Exception e1) {
@@ -317,6 +328,34 @@ public class TelaPrincipal {
 		
 		/*!FIM Painel Conf EMAIL**************************************************************/
 		
+		
+		/*CONSOLE**************************************************************/
+		
+		panelConsole.setBounds(0, 0, 800, 578);
+		frame.getContentPane().add(panelConsole);
+		panelConsole.setLayout(null);
+		panelConsole.setVisible(false);
+		
+		JLabel lblAnjoDaGuarda2 = new JLabel("ANJO DA GUARDA");
+		lblAnjoDaGuarda2.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		lblAnjoDaGuarda2.setBounds(333, 16, 146, 36);
+		panelConsole.add(lblAnjoDaGuarda2);
+		
+	
+		textArea.setRows(50);
+		textArea.setBounds(729, 85, -660, 454);
+		panelConsole.add(textArea);
+		
+		JButton btnVoltarConsole = new JButton("Voltar");
+		btnVoltarEmail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelEmail.setVisible(false);
+				panelPrincipal.setVisible(true);
+			}
+		});
+		btnVoltarConsole.setBounds(19, 532, 117, 29);
+		panelConsole.add(btnVoltarConsole);
+		/*!FIM CONSOLE**************************************************************/
 		
 		
 		/*Painel Conf dos Sensores********************************************/
